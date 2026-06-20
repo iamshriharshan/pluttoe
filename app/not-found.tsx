@@ -10,7 +10,7 @@ export default function NotFound() {
       <Card className="mx-auto max-w-2xl">
         <h1 className="text-3xl font-semibold text-zinc-950">Page not found</h1>
         <p className="mt-4 text-sm leading-7 text-zinc-500">
-          Pluto could not find that route. The app structure may have changed or the
+          Pluttoe could not find that route. The app structure may have changed or the
           record does not exist yet.
         </p>
         <Link href="/" className="mt-6 inline-block">

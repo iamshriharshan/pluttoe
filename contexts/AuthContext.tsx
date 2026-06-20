@@ -173,7 +173,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           readCookie("pluto_role") === "startup" ? "startup" : "freelancer";
         const displayName =
           user.displayName ??
-          (fallbackRole === "startup" ? "Pluto Startup" : "Pluto Freelancer");
+          (fallbackRole === "startup" ? "Pluttoe Startup" : "Pluttoe Freelancer");
         const email = user.email ?? "local@pluto.dev";
         await bootstrapUser({
           uid: user.uid,
@@ -240,7 +240,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const displayName =
               result.user.displayName ||
               params.displayName ||
-              (params.role === "startup" ? "Pluto Startup" : "Pluto Freelancer");
+              (params.role === "startup" ? "Pluttoe Startup" : "Pluttoe Freelancer");
             const email = result.user.email || params.email;
 
             await bootstrapUser({
@@ -261,7 +261,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               );
               return {
                 message:
-                  "Firebase data writes are restricted, so Pluto switched to local persisted mode.",
+                  "Firebase data writes are restricted, so Pluttoe switched to local persisted mode.",
                 profile: localProfile,
               };
             }
@@ -283,7 +283,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setBackend
         );
         return {
-          message: "Firebase is unavailable, so Pluto is running in local persisted mode.",
+          message: "Firebase is unavailable, so Pluttoe is running in local persisted mode.",
           profile: localProfile,
         };
       },

@@ -13,13 +13,13 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("Pluto route error", error);
+    console.error("Pluttoe route error", error);
   }, [error]);
 
   return (
     <Card className="mx-auto mt-20 max-w-2xl">
       <h1 className="text-2xl font-semibold text-zinc-950">
-        Pluto hit an unexpected error
+        Pluttoe hit an unexpected error
       </h1>
       <p className="mt-3 text-sm leading-7 text-zinc-500">
         The app stopped this request before it cascaded. Retry once and if it

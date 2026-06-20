@@ -50,7 +50,7 @@ export default function LoginPage() {
         role,
         displayName:
           displayName.trim() ||
-          (role === "startup" ? "Pluto Startup" : "Pluto Freelancer"),
+          (role === "startup" ? "Pluttoe Startup" : "Pluttoe Freelancer"),
         email: email.trim(),
         password,
         mode,
@@ -72,10 +72,10 @@ export default function LoginPage() {
       <div className="mx-auto max-w-2xl">
         <Card>
           <p className="text-xs uppercase tracking-[0.24em] text-zinc-400">
-            Pluto access
+            Pluttoe access
           </p>
           <h1 className="mt-4 text-3xl font-semibold text-zinc-950">
-            {mode === "signup" ? "Create your Pluto account" : "Sign in to Pluto"}
+            {mode === "signup" ? "Create your Pluttoe account" : "Sign in to Pluttoe"}
           </h1>
           <p className="mt-3 text-sm leading-7 text-zinc-500">
             Choose your side first. Startups go to the startup workspace;
@@ -84,7 +84,7 @@ export default function LoginPage() {
 
           {envReady === false ? (
             <div className="mt-6 rounded-[24px] border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-              Firebase env is incomplete, but Pluto can still run in local persisted
+              Firebase env is incomplete, but Pluttoe can still run in local persisted
               mode. Missing keys: {getMissingFirebaseEnv().join(", ")}
             </div>
           ) : null}

@@ -18,7 +18,7 @@ const matchSignals = [
 
 const workflow = [
   ["Define the GTM Requirement", "Submit your product, target market, sales goal, budget, and engagement model."],
-  ["Receive Ranked Matches", "Pluto analyzes and ranks operators based on relevance, experience, and commercial fit."],
+  ["Receive Ranked Matches", "Pluttoe analyzes and ranks operators based on relevance, experience, and commercial fit."],
   ["Review Verified Profile Context", "Evaluate industries, channels, experience, pricing, availability, and proof of execution."],
   ["Approve and Connect", "Start conversations only after identifying the right fit for your growth objective."],
 ] as const;
@@ -84,9 +84,9 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link href="/" className={styles.brand} aria-label="Pluto home">
-          <Image src="/pluto-logo.png" alt="Pluto" width={36} height={36} className={styles.logo} priority />
-          <span><strong>Pluto</strong><small>GTM matching platform</small></span>
+        <Link href="/" className={styles.brand} aria-label="Pluttoe home">
+          <Image src="/pluto-logo.png" alt="Pluttoe" width={36} height={36} className={styles.logo} priority />
+          <span><strong>Pluttoe</strong><small>GTM matching platform</small></span>
         </Link>
         <nav className={styles.nav} aria-label="Main navigation">
           <Link href="#home">Home</Link>
@@ -104,8 +104,8 @@ export default function Home() {
         <section id="home" className={styles.hero}>
           <div className={styles.heroCopy}>
             <h1>The GTM intelligence platform built to connect startups with verified revenue operators.</h1>
-            <p>Pluto enables startups to identify, evaluate, and connect with trusted go-to-market freelancers, channel sales partners, and growth operators based on sector expertise, regional access, budget alignment, and proven execution capability.</p>
-            <div className={styles.statement}>Pluto replaces fragmented GTM hiring with a structured, intelligence-led matching system designed for serious market expansion.</div>
+            <p>Pluttoe enables startups to identify, evaluate, and connect with trusted go-to-market freelancers, channel sales partners, and growth operators based on sector expertise, regional access, budget alignment, and proven execution capability.</p>
+            <div className={styles.statement}>Pluttoe replaces fragmented GTM hiring with a structured, intelligence-led matching system designed for serious market expansion.</div>
             <div className={styles.actions}>
               <Link href={workspaceHref} className={`${styles.button} ${styles.buttonDark}`}>Create startup workspace</Link>
               <Link href={workspaceHref} className={`${styles.button} ${styles.buttonLight}`}>Join as GTM specialist</Link>
@@ -130,7 +130,7 @@ export default function Home() {
         </section>
 
         <section id="how-it-works" className={styles.workflowSection}>
-          <p className={styles.eyebrow}>HOW PLUTO WORKS</p>
+          <p className={styles.eyebrow}>HOW PLUTTOE WORKS</p>
           <h2>A disciplined matching workflow for startups that need GTM execution, not generic talent discovery.</h2>
           <div className={styles.workflowGrid}>
             {workflow.map(([title, description], index) => (

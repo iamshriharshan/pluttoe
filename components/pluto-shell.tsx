@@ -23,9 +23,9 @@ export function PlutoShell({
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 md:px-8">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-full border border-zinc-200 bg-white/80 px-4 py-3 backdrop-blur">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/pluto-logo.png" alt="Pluto" width={40} height={40} className="rounded-full" priority />
+            <Image src="/pluto-logo.png" alt="Pluttoe" width={40} height={40} className="rounded-full" priority />
             <div>
-              <p className="text-sm font-semibold text-zinc-950">Pluto</p>
+              <p className="text-sm font-semibold text-zinc-950">Pluttoe</p>
               <p className="text-xs text-zinc-500">GTM matching platform</p>
             </div>
           </Link>
@@ -52,7 +52,7 @@ export function PlutoShell({
               </>
             ) : (
               <Link href="/login">
-                <Button>Enter Pluto</Button>
+                <Button>Enter Pluttoe</Button>
               </Link>
             )}
           </nav>

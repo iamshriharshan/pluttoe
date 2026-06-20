@@ -56,7 +56,7 @@ export function ProfilePageClient({ id }: { id: string }) {
     return (
       <EmptyState
         title="Profile not found"
-        description="That Pluto profile either does not exist yet or is not accessible."
+        description="That Pluttoe profile either does not exist yet or is not accessible."
         action={
           <Link href={viewer ? getRoleHomePath(viewer.role) : "/login"}>
             <Button>{viewer ? "Back to workspace" : "Sign in"}</Button>
@@ -214,7 +214,7 @@ export function ProfilePageClient({ id }: { id: string }) {
               <p className="text-lg font-semibold text-zinc-950">Startup context</p>
               <div className="mt-5 space-y-4 text-sm leading-6 text-zinc-600">
                 <p>
-                  Pluto keeps startup sectors flexible, but every opportunity is
+                  Pluttoe keeps startup sectors flexible, but every opportunity is
                   still centered on a GTM role.
                 </p>
                 {bundle.startup?.logo?.url ? (

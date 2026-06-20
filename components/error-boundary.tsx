@@ -21,7 +21,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error("Pluto UI error", error, info);
+    console.error("Pluttoe UI error", error, info);
   }
 
   public render() {
@@ -32,7 +32,7 @@ export class ErrorBoundary extends Component<Props, State> {
             Something slipped off the rail.
           </h2>
           <p className="mt-3 text-sm leading-6 text-zinc-500">
-            Pluto caught the issue before the whole page crashed. Try again and we
+            Pluttoe caught the issue before the whole page crashed. Try again and we
             will reload the experience cleanly.
           </p>
           <Button className="mt-6" onClick={() => window.location.reload()}>

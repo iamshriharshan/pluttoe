@@ -4,7 +4,7 @@ import { Providers } from "@/app/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pluto | GTM Matching",
+  title: "Pluttoe | GTM Matching",
   description:
     "Premium minimalist platform for matching GTM freelancers with startup opportunities.",
 };

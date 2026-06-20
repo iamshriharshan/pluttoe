@@ -438,7 +438,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
   if (!authUser || !profile) {
     return (
       <EmptyState
-        title="You need an active Pluto session"
+        title="You need an active Pluttoe session"
         description="Sign in to manage your GTM profile, review applicants, or apply to startup opportunities."
         action={
           <Link href="/login">
@@ -463,7 +463,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
             Fixed talent focus
           </p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-950">
-            Pluto is tuned only for GTM talent matching.
+            Pluttoe is tuned only for GTM talent matching.
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
             Freelancers are always evaluated as GTM specialists. Startups vary by
@@ -864,7 +864,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                 Post a GTM opportunity
               </p>
               <p className="mt-1 text-sm text-zinc-500">
-                Pluto keeps the role fixed to GTM while sector, budget, and category
+                Pluttoe keeps the role fixed to GTM while sector, budget, and category
                 change by startup.
               </p>
               <div className="mt-6 space-y-4">
@@ -1253,7 +1253,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                 ) : (
                   <EmptyState
                     title="No recommendations stored yet"
-                    description="Refresh AI ranking after publishing an opportunity and Pluto will persist sorted recommendations in Firestore."
+                    description="Refresh AI ranking after publishing an opportunity and Pluttoe will persist sorted recommendations in Firestore."
                   />
                 )}
               </div>

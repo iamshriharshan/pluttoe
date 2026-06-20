@@ -15,7 +15,7 @@ export default function ProfileError({
         Profile failed to load
       </h2>
       <p className="mt-3 text-sm leading-6 text-zinc-500">
-        Pluto hit an issue while loading this profile. Try the route again and we
+        Pluttoe hit an issue while loading this profile. Try the route again and we
         will request the profile fresh from Firestore.
       </p>
       <Button className="mt-6" onClick={reset}>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -23,9 +24,7 @@ export function PlutoShell({
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 md:px-8">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-full border border-zinc-200 bg-white/80 px-4 py-3 backdrop-blur">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-950 text-sm font-semibold text-white">
-              P
-            </div>
+            <Image src="/pluto-logo.png" alt="Pluto" width={40} height={40} className="rounded-full" priority />
             <div>
               <p className="text-sm font-semibold text-zinc-950">Pluto</p>
               <p className="text-xs text-zinc-500">GTM matching platform</p>

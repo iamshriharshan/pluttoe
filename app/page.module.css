@@ -1,0 +1,152 @@
+.page {
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at 2% 2%, #f7f7f7 0, transparent 31%), radial-gradient(circle at 98% 0, #fafafa 0, transparent 34%), #fff;
+  color: #080808;
+}
+
+.header {
+  position: sticky;
+  top: 12px;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  align-items: center;
+  width: min(1240px, calc(100% - 48px));
+  min-height: 66px;
+  margin: 12px auto 0;
+  padding: 9px 18px;
+  border: 1px solid #e8e8e8;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+  backdrop-filter: blur(14px);
+}
+
+.brand { display: flex; align-items: center; gap: 11px; width: max-content; }
+.brand > span:last-child { display: grid; line-height: 1; }
+.brand strong { font-size: 12px; font-weight: 600; }
+.brand small { margin-top: 5px; color: #a0a0a0; font-size: 9px; }
+.logo { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: #050505; color: #fff; font-size: 11px; }
+.nav { display: flex; align-items: center; justify-content: center; gap: clamp(24px, 3.1vw, 52px); font-size: 11px; }
+.nav a { position: relative; white-space: nowrap; }
+.nav a::after { position: absolute; right: 0; bottom: -5px; left: 0; height: 1px; background: #111; content: ""; transform: scaleX(0); transition: transform .22s ease; }
+.nav a:hover::after { transform: scaleX(1); }
+
+.button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0 23px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color .22s ease, background-color .22s ease, border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+.button:hover { transform: scale(1.025); }
+.button:active { transform: scale(.985); }
+.buttonDark { border-color: #070707; background: #050505; color: #fff; box-shadow: 0 4px 11px rgba(0,0,0,.17); }
+.buttonDark:hover { border-color: #292929; background: #292929; box-shadow: 0 7px 16px rgba(0,0,0,.19); }
+.buttonLight { border-color: #dedede; background: #fff; color: #111; }
+.buttonLight:hover { border-color: #111; background: #111; color: #fff; }
+.headerCta { min-height: 36px; border-radius: 999px; padding-inline: 21px; font-size: 10px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: .94fr 1.06fr;
+  gap: clamp(54px, 7vw, 105px);
+  width: min(1194px, calc(100% - 64px));
+  margin: 22px auto 0;
+  align-items: center;
+}
+.heroCopy h1 { max-width: 560px; margin: 0; font-size: clamp(38px, 3.7vw, 51px); font-weight: 650; letter-spacing: -.045em; line-height: 1.055; }
+.heroCopy > p { max-width: 550px; margin: 20px 0 0; color: #343434; font-size: 13px; line-height: 1.55; }
+.statement { max-width: 520px; margin-top: 20px; padding: 16px 18px; border: 1px solid #e5e5e5; border-radius: 9px; font-size: 12px; font-weight: 650; line-height: 1.45; }
+.actions { display: flex; gap: 16px; margin-top: 17px; }
+.actions .button { min-width: 198px; }
+
+.signalsCard { padding: 24px 28px 21px; border: 1px solid #ececec; border-radius: 21px; background: rgba(255,255,255,.8); box-shadow: 0 12px 35px rgba(0,0,0,.045); }
+.eyebrow { margin: 0; color: #6a6a6a; font-size: 9px; font-weight: 700; letter-spacing: .28em; text-align: left; }
+.signalList { margin-top: 13px; }
+.signal { display: grid; grid-template-columns: 48px 1fr; align-items: center; min-height: 57px; border-bottom: 1px solid #e9e9e9; }
+.signal:last-child { border-bottom: 0; }
+.signalIcon { display: grid; width: 31px; height: 31px; place-items: center; }
+.signalIcon svg { width: 29px; height: 29px; }
+.signal > span:last-child { display: grid; gap: 3px; }
+.signal strong { font-size: 11px; font-weight: 650; }
+.signal small { color: #4c4c4c; font-size: 9px; }
+.signalNote { display: grid; grid-template-columns: 38px 1fr; align-items: center; min-height: 57px; margin-top: 11px; padding: 8px 12px; border: 1px solid #e5e5e5; border-radius: 10px; background: linear-gradient(100deg,#fff,#fafafa); }
+.signalNote > span { font-size: 23px; }
+.signalNote p { margin: 0; font-size: 10px; line-height: 1.4; }
+
+.workflowSection { width: min(1280px, calc(100% - 48px)); margin: 24px auto 0; padding: 20px 42px 22px; border: 1px solid #ededed; border-radius: 20px; box-shadow: 0 12px 35px rgba(0,0,0,.035); }
+.workflowSection .eyebrow { text-align: center; }
+.workflowSection > h2 { margin: 9px 0 20px; font-size: 17px; font-weight: 650; letter-spacing: -.015em; text-align: center; }
+.workflowGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 43px; }
+.workflowCard { position: relative; min-height: 153px; padding: 22px 18px; border: 1px solid #e8e8e8; border-radius: 15px; background: #fff; box-shadow: 0 8px 22px rgba(0,0,0,.035); }
+.workflowCard:not(:last-child)::after { position: absolute; top: 68px; left: calc(100% + 1px); width: 43px; border-top: 1px dotted #aaa; content: ""; }
+.workflowTitle { display: grid; grid-template-columns: 27px 1fr; gap: 13px; align-items: start; }
+.workflowTitle span { display: grid; width: 27px; height: 27px; place-items: center; border-radius: 50%; background: #080808; color: #fff; font-size: 11px; font-weight: 700; }
+.workflowTitle h3 { margin: 2px 0 0; font-size: 12px; font-weight: 650; line-height: 1.25; }
+.workflowCard > p { margin: 17px 0 0 40px; color: #555; font-size: 9px; line-height: 1.5; }
+
+.pricingSection { min-height: 920px; width: min(1240px, calc(100% - 48px)); margin: 75px auto 0; padding: 35px 0 30px; scroll-margin-top: 95px; }
+.pricingSection > .eyebrow { text-align: center; }
+.pricingSection > h2 { margin: 15px 0 12px; font-size: clamp(32px, 3.4vw, 45px); font-weight: 650; letter-spacing: -.04em; line-height: 1.06; text-align: center; }
+.pricingLead { margin: 0; color: #565656; font-size: 15px; text-align: center; }
+.pricingGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 31px; }
+.planCard { position: relative; display: flex; min-height: 493px; flex-direction: column; padding: 34px 25px 24px; border: 1px solid #e5e5e5; border-radius: 22px; background: rgba(255,255,255,.9); }
+.specialistPlan { background: linear-gradient(145deg,#fafafa,#f8f7fc); }
+.popular { position: absolute; top: 8px; right: 8px; padding: 7px 16px; border-radius: 999px; background: #050505; color: #fff; font-size: 9px; }
+.planCard h3 { margin: 0; font-size: 17px; font-weight: 650; }
+.planDescription { min-height: 48px; margin: 13px 0 0; color: #555; font-size: 11px; line-height: 1.55; }
+.price { display: flex; align-items: baseline; margin: 18px 0 21px; }
+.price strong { font-size: 32px; letter-spacing: -.04em; }
+.price span { margin-left: 3px; font-size: 10px; }
+.planCard ul { flex: 1; margin: 0; padding: 19px 0 20px; border-top: 1px solid #e5e5e5; list-style: none; }
+.planCard li { display: flex; gap: 12px; margin-bottom: 14px; font-size: 10px; }
+.planCard li span { font-size: 12px; }
+.planCard .button { width: 100%; min-height: 45px; }
+.pricingFootnote { margin: 28px 0 0; color: #555; font-size: 11px; line-height: 1.55; text-align: center; }
+
+@media (max-width: 1050px) {
+  .header { grid-template-columns: auto 1fr auto; }
+  .nav { gap: 18px; }
+  .nav a:nth-child(3), .nav a:nth-child(4) { display: none; }
+  .hero { gap: 38px; }
+  .workflowGrid { gap: 16px; }
+  .workflowCard:not(:last-child)::after { width: 16px; }
+  .pricingGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .header { display: flex; width: calc(100% - 24px); min-height: 58px; padding: 8px 10px; }
+  .brand small { display: none; }
+  .logo { width: 32px; height: 32px; }
+  .nav { display: none; }
+  .headerCta { margin-left: auto; padding-inline: 14px; }
+  .hero { grid-template-columns: 1fr; width: calc(100% - 32px); margin-top: 42px; }
+  .heroCopy h1 { font-size: clamp(36px, 11.2vw, 49px); }
+  .heroCopy > p { font-size: 13px; }
+  .actions { flex-direction: column; }
+  .actions .button { width: 100%; }
+  .signalsCard { padding: 22px 18px 18px; }
+  .signal { grid-template-columns: 42px 1fr; }
+  .signal small { line-height: 1.4; }
+  .workflowSection { width: calc(100% - 32px); padding: 24px 16px; }
+  .workflowSection > h2 { line-height: 1.35; }
+  .workflowGrid { grid-template-columns: 1fr; }
+  .workflowCard { min-height: auto; }
+  .workflowCard:not(:last-child)::after { display: none; }
+  .pricingSection { width: calc(100% - 32px); margin-top: 50px; }
+  .pricingGrid { grid-template-columns: 1fr; }
+  .planCard { min-height: 470px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button, .nav a::after { transition: none; }
+  .button:hover, .button:active { transform: none; }
+}

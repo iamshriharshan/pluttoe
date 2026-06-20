@@ -1,0 +1,15 @@
+
+> pluto@0.1.0 dev
+> next dev -p 3000
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.137.1:3000
+- Environments: .env.local
+✓ Ready in 2.7s
+Creating turbopack project {
+  dir: 'D:\\Pluto\\backup main(incl msges)\\pluto - Copy - Copy\\pluto - Copy',
+  testMode: true
+}
+
+○ Compiling / ...

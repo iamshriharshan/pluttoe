@@ -1,0 +1,19 @@
+
+> pluto@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.137.1:3000
+- Environments: .env.local
+✓ Ready in 2.2s
+Creating turbopack project {
+  dir: 'D:\\Pluto\\backup main(incl msges)\\pluto - Copy - Copy\\pluto - Copy',
+  testMode: true
+}
+
+○ Compiling /_error ...
+ GET / 404 in 1488ms (next.js: -122829µs, proxy.ts: 1408ms, application-code: 203ms)
+○ Compiling /_not-found/page ...
+ GET / 404 in 980ms (next.js: -115429µs, proxy.ts: 927ms, application-code: 168ms)
+[?25h

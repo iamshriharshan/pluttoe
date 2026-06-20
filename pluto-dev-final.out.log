@@ -1,0 +1,23 @@
+
+> pluto@0.1.0 dev
+> next dev --port 3001
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.255.1:3001
+- Environments: .env.local
+✓ Ready in 1332ms
+Creating turbopack project {
+  dir: 'C:\\Users\\admin\\Downloads\\pluto - Copy\\pluto - Copy',
+  testMode: true
+}
+
+ GET /profile/JGCkBCCJYRcXMXSXOdplhX3E0kW2 200 in 2.1s (proxy.ts: 457ms)
+ GET /login 200 in 2.1s (next.js: 260ms, proxy.ts: 452ms, application-code: 1431ms)
+ GET /dashboard 200 in 1699ms (next.js: 236ms, proxy.ts: 1188ms, application-code: 276ms)
+ GET /login 200 in 144ms (next.js: 12ms, proxy.ts: 12ms, application-code: 120ms)
+ GET /login 200 in 131ms (next.js: 8ms, proxy.ts: 10ms, application-code: 113ms)
+✓ Compiled in 886ms
+ GET /login 200 in 502ms (next.js: 355ms, proxy.ts: 81ms, application-code: 66ms)
+ GET /dashboard 200 in 508ms (next.js: 154ms, proxy.ts: 79ms, application-code: 275ms)
+[?25h

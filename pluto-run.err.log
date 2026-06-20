@@ -1,0 +1,42 @@
+⨯ TypeError: adapterFn is not a function
+    at ignore-listed frames
+Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ TypeError: adapterFn is not a function
+    at ignore-listed frames
+Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ TypeError: adapterFn is not a function
+    at ignore-listed frames
+Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+⨯ Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at ignore-listed frames
+[browser] Uncaught Error: <Html> should not be imported outside of pages/_document.
+Read more: https://nextjs.org/docs/messages/no-document-import-in-page
+    at useHtmlContext (file://D:\Pluto\backup main(incl msges)\pluto - Copy - Copy\pluto - Copy\.next\dev\server\chunks\ssr\[root-of-the-server]__08e_lfq._.js:1636:37)
+    at Html (file://D:\Pluto\backup main(incl msges)\pluto - Copy - Copy\pluto - Copy\.next\dev\server\chunks\ssr\[root-of-the-server]__08e_lfq._.js:2898:135)
+
+thread 'tokio-runtime-worker' (14748) panicked at C:\Users\runneradmin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\tokio-1.43.0\src\io\blocking.rs:76:46:
+OS can't spawn worker thread: The paging file is too small for this operation to complete. (os error 1455)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+

@@ -1,0 +1,28 @@
+
+> pluto@0.1.0 dev
+> next dev --port 3001
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.255.1:3001
+- Environments: .env.local
+✓ Ready in 1338ms
+Creating turbopack project {
+  dir: 'C:\\Users\\admin\\Downloads\\pluto - Copy\\pluto - Copy',
+  testMode: true
+}
+
+ GET /login 200 in 2.1s (next.js: 276ms, proxy.ts: 452ms, application-code: 1413ms)
+ GET /dashboard 200 in 2.1s (next.js: 1395ms, proxy.ts: 462ms, application-code: 272ms)
+ GET /login 200 in 168ms (next.js: 14ms, proxy.ts: 19ms, application-code: 135ms)
+ GET /login 200 in 142ms (next.js: 9ms, proxy.ts: 14ms, application-code: 120ms)
+ GET /dashboard 200 in 143ms (next.js: 11ms, proxy.ts: 16ms, application-code: 116ms)
+ GET /login 200 in 60ms (next.js: 7ms, proxy.ts: 10ms, application-code: 42ms)
+ GET /dashboard 200 in 91ms (next.js: 12ms, proxy.ts: 13ms, application-code: 66ms)
+ GET /profile/JGCkBCCJYRcXMXSXOdplhX3E0kW2 200 in 1307ms (next.js: 1216ms, proxy.ts: 11ms, application-code: 79ms)
+ GET /dashboard 200 in 73ms (next.js: 9ms, proxy.ts: 10ms, application-code: 54ms)
+ GET /profile/JGCkBCCJYRcXMXSXOdplhX3E0kW2 200 in 135ms (next.js: 38ms, proxy.ts: 11ms, application-code: 86ms)
+ GET /dashboard 200 in 77ms (next.js: 10ms, proxy.ts: 10ms, application-code: 57ms)
+ GET /profile/JGCkBCCJYRcXMXSXOdplhX3E0kW2 200 in 92ms (next.js: 27ms, proxy.ts: 9ms, application-code: 56ms)
+ GET /dashboard 200 in 160ms (next.js: 8ms, proxy.ts: 13ms, application-code: 138ms)
+ GET /login 200 in 71ms (next.js: 10ms, proxy.ts: 12ms, application-code: 49ms)

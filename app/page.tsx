@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { useAuth } from "@/contexts/AuthContext";
 import { getRoleHomePath } from "@/lib/utils";
@@ -84,7 +85,7 @@ export default function Home() {
     <div className={styles.page}>
       <header className={styles.header}>
         <Link href="/" className={styles.brand} aria-label="Pluto home">
-          <span className={styles.logo}>P</span>
+          <Image src="/pluto-logo.png" alt="Pluto" width={36} height={36} className={styles.logo} priority />
           <span><strong>Pluto</strong><small>GTM matching platform</small></span>
         </Link>
         <nav className={styles.nav} aria-label="Main navigation">

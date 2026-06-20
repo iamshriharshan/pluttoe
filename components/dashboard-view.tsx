@@ -375,7 +375,9 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
               {application.opportunityTitle}
             </p>
             <p className="text-sm text-zinc-500">
-              {isFreelancer ? application.startupName : application.freelancerId}
+              {isFreelancer
+                ? application.startupName
+                : freelancerNames.get(application.freelancerId) ?? "Freelancer"}
             </p>
           </div>
           <Badge>{application.status.replace("_", " ")}</Badge>
@@ -1100,7 +1102,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                             {application.opportunityTitle}
                           </p>
                           <p className="text-sm text-zinc-500">
-                            Freelancer ID: {application.freelancerId}
+                            Freelancer: {freelancerNames.get(application.freelancerId) ?? "Freelancer"}
                           </p>
                         </div>
                         <Badge>{application.status.replace("_", " ")}</Badge>

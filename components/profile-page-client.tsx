@@ -86,9 +86,9 @@ export function ProfilePageClient({ id }: { id: string }) {
               {isFreelancer ? bundle.freelancer?.bio : bundle.startup?.about}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              <Badge className="bg-zinc-950 text-white">
+              <span className="inline-flex items-center rounded-full border border-zinc-950 bg-white px-3 py-1 text-xs font-medium text-zinc-950">
                 {isFreelancer ? "GTM specialist" : bundle.startup?.industry}
-              </Badge>
+              </span>
               {isFreelancer
                 ? asArray<string>(bundle.freelancer?.skills).map((skill) => (
                     <Badge key={skill}>{skill}</Badge>

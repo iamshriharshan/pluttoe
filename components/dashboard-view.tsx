@@ -474,7 +474,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
           <p className="mt-2 text-2xl font-semibold text-zinc-950">
             {profile.displayName}
           </p>
-          <span className="mt-4 block text-xs font-medium text-zinc-950">{profile.role}</span>
+          <span className="mt-4 inline-block rounded-full border border-zinc-950 px-3 py-1 text-xs font-medium text-zinc-950">{profile.role}</span>
           <p className="mt-3 text-xs text-zinc-400">
             Backend:{" "}
             {backend === "firebase" ? "Firebase live mode" : "Local persisted mode"}

@@ -43,7 +43,7 @@ export function PlutoShell({
                 <Link href={`/profile/${activeUser.uid}`}>
                   <Button variant="secondary">Profile</Button>
                 </Link>
-                <span className="px-3 text-xs font-medium text-zinc-950">
+                <span className="rounded-full border border-zinc-950 px-3 py-1 text-xs font-medium text-zinc-950">
                   {activeUser.role}
                 </span>
                 <Button variant="ghost" onClick={() => void auth.signOutUser()}>

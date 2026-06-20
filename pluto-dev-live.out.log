@@ -97,3 +97,16 @@ Creating turbopack project {
  GET /startup 200 in 246ms (next.js: 55ms, proxy.ts: 12ms, application-code: 178ms)
  GET /startup 200 in 196ms (next.js: 19ms, proxy.ts: 63ms, application-code: 114ms)
  GET /startup 200 in 141ms (next.js: 58ms, proxy.ts: 15ms, application-code: 68ms)
+ GET /startup 200 in 596ms (next.js: 8ms, proxy.ts: 11ms, application-code: 577ms)
+✓ Compiled in 102ms
+ GET / 200 in 315ms (next.js: 93ms, proxy.ts: 58ms, application-code: 164ms)
+ GET /startup 200 in 251ms (next.js: 91ms, proxy.ts: 121ms, application-code: 39ms)
+✓ Compiled in 55ms
+ GET / 200 in 338ms (next.js: 177ms, proxy.ts: 53ms, application-code: 107ms)
+ GET /startup 200 in 342ms (next.js: 85ms, proxy.ts: 53ms, application-code: 205ms)
+ GET /startup 200 in 131ms (next.js: 8ms, proxy.ts: 7ms, application-code: 116ms)
+ GET / 200 in 150ms (next.js: 40ms, proxy.ts: 6ms, application-code: 104ms)
+ GET /startup 200 in 113ms (next.js: 23ms, proxy.ts: 24ms, application-code: 66ms)
+ GET /startup 200 in 115ms (next.js: 9ms, proxy.ts: 23ms, application-code: 84ms)
+ GET / 200 in 88ms (next.js: 7ms, proxy.ts: 36ms, application-code: 45ms)
+ GET / 200 in 57ms (next.js: 29ms, proxy.ts: 5ms, application-code: 23ms)

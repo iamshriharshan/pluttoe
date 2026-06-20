@@ -142,7 +142,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="pricing" className={styles.pricingSection}>
+        {/* <section id="pricing" className={styles.pricingSection}>
           <p className={styles.eyebrow}>PRICING</p>
           <h2>Simple, transparent pricing<br />for startups and GTM specialists.</h2>
           <p className={styles.pricingLead}>Choose the plan that fits your stage and growth ambition.</p>
@@ -159,7 +159,7 @@ export default function Home() {
             ))}
           </div>
           <p className={styles.pricingFootnote}>All plans are billed monthly. Cancel anytime.<br />No long-term contracts. No hidden fees.</p>
-        </section>
+        </section> */}
       </main>
     </div>
   );

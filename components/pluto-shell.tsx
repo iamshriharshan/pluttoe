@@ -4,9 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/contexts/AuthContext";
-import { cn, getRoleHomePath } from "@/lib/utils";
+import { getRoleHomePath } from "@/lib/utils";
 import type { UserRecord } from "@/types";
 
 export function PlutoShell({
@@ -44,9 +43,9 @@ export function PlutoShell({
                 <Link href={`/profile/${activeUser.uid}`}>
                   <Button variant="secondary">Profile</Button>
                 </Link>
-                <Badge className={cn("bg-zinc-950 text-white")}>
+                <span className="px-3 text-xs font-medium text-zinc-950">
                   {activeUser.role}
-                </Badge>
+                </span>
                 <Button variant="ghost" onClick={() => void auth.signOutUser()}>
                   Sign out
                 </Button>

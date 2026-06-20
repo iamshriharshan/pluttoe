@@ -269,6 +269,10 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
     return new Map(freelancerDirectory.map((entry) => [entry.id, entry.fullName]));
   }, [freelancerDirectory]);
 
+  const opportunityTitles = useMemo(() => {
+    return new Map(opportunities.map((entry) => [entry.id, entry.title]));
+  }, [opportunities]);
+
   const appliedOpportunityIds = useMemo(() => {
     return new Set(applications.map((application) => application.opportunityId));
   }, [applications]);
@@ -1215,7 +1219,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                             {freelancerNames.get(recommendation.freelancerId) ?? "Freelancer"}
                           </p>
                           <p className="text-sm text-zinc-500">
-                            Opportunity {recommendation.opportunityId}
+                            {opportunityTitles.get(recommendation.opportunityId) ?? "Opportunity"}
                           </p>
                         </div>
                         <div className="text-right">

@@ -1243,6 +1243,11 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                           <Badge key={skill}>{skill}</Badge>
                         ))}
                       </div>
+                      <div className="mt-4">
+                        <Link href={`/profile/${recommendation.freelancerId}`}>
+                          <Button variant="secondary">Review profile</Button>
+                        </Link>
+                      </div>
                     </div>
                   ))
                 ) : (

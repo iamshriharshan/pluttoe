@@ -750,13 +750,19 @@ export async function getAllFreelancers() {
   return withBackend(
     async () => {
       const { db } = ensureFirebase();
-      const snapshot = await getDocs(
-        query(collection(db, "freelancers"), orderBy("createdAt", "desc"), limit(40))
-      );
+      const [snapshot, freelancerUsers] = await Promise.all([
+        getDocs(
+          query(collection(db, "freelancers"), orderBy("createdAt", "desc"), limit(40))
+        ),
+        getDocs(query(collection(db, "users"), where("role", "==", "freelancer"))),
+      ]);
+      const freelancerIds = new Set(freelancerUsers.docs.map((entry) => entry.id));
 
-      return snapshot.docs.map((entry) =>
-        normalizeFreelancerProfile(entry.id, entry.data() as FreelancerProfile)
-      );
+      return snapshot.docs
+        .filter((entry) => freelancerIds.has(entry.id))
+        .map((entry) =>
+          normalizeFreelancerProfile(entry.id, entry.data() as FreelancerProfile)
+        );
     },
     () => localGetAllFreelancers()
   );
@@ -797,17 +803,22 @@ export async function getRecommendationsForStartup(startupId: string) {
   return withBackend(
     async () => {
       const { db } = ensureFirebase();
-      const snapshot = await getDocs(
-        query(
-          collection(db, "ai_recommendations"),
-          where("startupId", "==", startupId)
-        )
-      );
+      const [snapshot, freelancerUsers] = await Promise.all([
+        getDocs(
+          query(
+            collection(db, "ai_recommendations"),
+            where("startupId", "==", startupId)
+          )
+        ),
+        getDocs(query(collection(db, "users"), where("role", "==", "freelancer"))),
+      ]);
+      const freelancerIds = new Set(freelancerUsers.docs.map((entry) => entry.id));
 
       return snapshot.docs
         .map((entry) =>
           normalizeRecommendation(entry.id, entry.data() as AIRecommendation)
         )
+        .filter((entry) => freelancerIds.has(entry.freelancerId))
         .sort((a, b) => b.score - a.score)
         .slice(0, 30);
     },

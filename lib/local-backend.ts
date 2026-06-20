@@ -485,14 +485,19 @@ export async function localGetAllStartupProfiles() {
 }
 
 export async function localGetAllFreelancers() {
-  return Object.values(readStore().freelancers).sort(
+  const store = readStore();
+  return Object.values(store.freelancers).filter(
+    (entry) => store.users[entry.id]?.role === "freelancer"
+  ).sort(
     (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
   );
 }
 
 export async function localSaveRecommendationsForOpportunity(opportunity: Opportunity) {
   const store = readStore();
-  const freelancers = Object.values(store.freelancers);
+  const freelancers = Object.values(store.freelancers).filter(
+    (entry) => store.users[entry.id]?.role === "freelancer"
+  );
 
   for (const freelancer of freelancers) {
     const recommendation = buildRecommendation(
@@ -513,8 +518,13 @@ export async function localSaveRecommendationsForOpportunity(opportunity: Opport
 }
 
 export async function localGetRecommendationsForStartup(startupId: string) {
-  return Object.values(readStore().recommendations)
-    .filter((entry) => entry.startupId === startupId)
+  const store = readStore();
+  return Object.values(store.recommendations)
+    .filter(
+      (entry) =>
+        entry.startupId === startupId &&
+        store.users[entry.freelancerId]?.role === "freelancer"
+    )
     .sort((a, b) => b.score - a.score)
     .slice(0, 30);
 }

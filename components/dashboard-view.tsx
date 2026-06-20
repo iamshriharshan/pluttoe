@@ -18,6 +18,7 @@ import { hasFirebaseEnv, getMissingFirebaseEnv } from "@/lib/env-validation";
 import {
   applyToOpportunity,
   createOpportunity,
+  getAllFreelancers,
   getAllStartupProfiles,
   getApplicationsForFreelancer,
   getApplicationsForStartup,
@@ -95,6 +96,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
   const [messages, setMessages] = useState<Record<string, MessageRecord[]>>({});
   const [messageDrafts, setMessageDrafts] = useState<Record<string, string>>({});
   const [recommendations, setRecommendations] = useState<AIRecommendation[]>([]);
+  const [freelancerDirectory, setFreelancerDirectory] = useState<FreelancerProfile[]>([]);
   const [startupDirectory, setStartupDirectory] = useState<StartupProfile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [refreshingMarket, setRefreshingMarket] = useState(false);
@@ -139,17 +141,19 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
       setMarketOpportunities(nextMarket);
       setStartupDirectory(startups);
     } else {
-      const [nextStartup, nextOpps, nextApps, nextRecommendations] =
+      const [nextStartup, nextOpps, nextApps, nextRecommendations, freelancers] =
         await Promise.all([
           getStartupProfile(authUser.uid),
           getStartupOpportunities(authUser.uid),
           getApplicationsForStartup(authUser.uid),
           getRecommendationsForStartup(authUser.uid),
+          getAllFreelancers(),
         ]);
       setStartup(nextStartup);
       setOpportunities(nextOpps);
       setApplications(nextApps);
       setRecommendations(nextRecommendations);
+      setFreelancerDirectory(freelancers);
     }
   }
 
@@ -181,12 +185,13 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
             return;
           }
 
-          const [nextStartup, nextOpps, nextApps, nextRecommendations] =
+          const [nextStartup, nextOpps, nextApps, nextRecommendations, freelancers] =
             await Promise.all([
               getStartupProfile(authUser.uid),
               getStartupOpportunities(authUser.uid),
               getApplicationsForStartup(authUser.uid),
               getRecommendationsForStartup(authUser.uid),
+              getAllFreelancers(),
             ]);
 
           if (!active) return;
@@ -196,6 +201,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
             setOpportunities(nextOpps);
             setApplications(nextApps);
             setRecommendations(nextRecommendations);
+            setFreelancerDirectory(freelancers);
           });
         };
 
@@ -258,6 +264,10 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
   const startupNames = useMemo(() => {
     return new Map(startupDirectory.map((entry) => [entry.id, entry.companyName]));
   }, [startupDirectory]);
+
+  const freelancerNames = useMemo(() => {
+    return new Map(freelancerDirectory.map((entry) => [entry.id, entry.fullName]));
+  }, [freelancerDirectory]);
 
   const appliedOpportunityIds = useMemo(() => {
     return new Set(applications.map((application) => application.opportunityId));
@@ -1202,7 +1212,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                       <div className="flex items-center justify-between gap-4">
                         <div>
                           <p className="font-medium text-zinc-950">
-                            Freelancer {recommendation.freelancerId}
+                            {freelancerNames.get(recommendation.freelancerId) ?? "Freelancer"}
                           </p>
                           <p className="text-sm text-zinc-500">
                             Opportunity {recommendation.opportunityId}

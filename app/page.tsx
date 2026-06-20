@@ -93,7 +93,6 @@ export default function Home() {
           <Link href="#how-it-works">How It Works</Link>
           <Link href={workspaceHref}>For Startups</Link>
           <Link href={workspaceHref}>For GTM Specialists</Link>
-          <Link href="#pricing">Pricing</Link>
         </nav>
         <Link href={workspaceHref} className={`${styles.button} ${styles.buttonDark} ${styles.headerCta}`}>
           {profile ? "Open Workspace" : "Create Startup Workspace"}

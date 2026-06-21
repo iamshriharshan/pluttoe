@@ -3,6 +3,7 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -26,6 +27,7 @@ import {
   localApplyToOpportunity,
   localBootstrapUser,
   localCreateOpportunity,
+  localDeleteOpportunity,
   localGetAllFreelancers,
   localGetAllStartupProfiles,
   localGetApplicationsForFreelancer,
@@ -43,6 +45,7 @@ import {
   localSaveStartupProfile,
   localSendMessage,
   localUpdateApplicationStatus,
+  localUpdateOpportunity,
   localUploadFile,
 } from "@/lib/local-backend";
 import type {
@@ -343,6 +346,38 @@ export async function createOpportunity(
     return opportunityRef.id;
   } catch (error) {
     explainFirebaseError(error, "Publishing opportunity");
+  }
+}
+
+export async function updateOpportunity(
+  opportunityId: string,
+  changes: Partial<Omit<Opportunity, "id" | "startupId" | "createdAt" | "updatedAt">>
+) {
+  if (prefersLocalBackend() || !firebaseReady()) {
+    return localUpdateOpportunity(opportunityId, changes);
+  }
+
+  try {
+    const { db } = ensureFirebase();
+    await updateDoc(doc(db, "opportunities", opportunityId), {
+      ...changes,
+      updatedAt: serverTimestamp(),
+    });
+  } catch (error) {
+    explainFirebaseError(error, "Updating opportunity");
+  }
+}
+
+export async function deleteOpportunity(opportunityId: string) {
+  if (prefersLocalBackend() || !firebaseReady()) {
+    return localDeleteOpportunity(opportunityId);
+  }
+
+  try {
+    const { db } = ensureFirebase();
+    await deleteDoc(doc(db, "opportunities", opportunityId));
+  } catch (error) {
+    explainFirebaseError(error, "Deleting opportunity");
   }
 }
 

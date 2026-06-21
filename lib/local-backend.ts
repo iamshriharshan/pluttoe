@@ -348,6 +348,27 @@ export async function localCreateOpportunity(
   return id;
 }
 
+export async function localUpdateOpportunity(
+  opportunityId: string,
+  changes: Partial<Omit<Opportunity, "id" | "startupId" | "createdAt" | "updatedAt">>
+) {
+  const store = readStore();
+  const existing = store.opportunities[opportunityId];
+  if (!existing) return;
+  store.opportunities[opportunityId] = {
+    ...existing,
+    ...changes,
+    updatedAt: now(),
+  };
+  writeStore(store);
+}
+
+export async function localDeleteOpportunity(opportunityId: string) {
+  const store = readStore();
+  delete store.opportunities[opportunityId];
+  writeStore(store);
+}
+
 export async function localUpsertOpportunity(opportunity: Opportunity) {
   const store = readStore();
   const existing = store.opportunities[opportunity.id];

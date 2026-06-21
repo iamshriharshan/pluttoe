@@ -18,6 +18,7 @@ import { hasFirebaseEnv, getMissingFirebaseEnv } from "@/lib/env-validation";
 import {
   applyToOpportunity,
   createOpportunity,
+  deleteOpportunity,
   getAllFreelancers,
   getAllStartupProfiles,
   getApplicationsForFreelancer,
@@ -38,6 +39,7 @@ import {
   subscribeToOpenOpportunities,
   subscribeToStartupOpportunities,
   updateApplicationStatus,
+  updateOpportunity,
 } from "@/lib/firestore";
 import { formatCurrency, formatDate, getRoleHomePath } from "@/lib/utils";
 import type {
@@ -101,6 +103,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
   const [submitting, setSubmitting] = useState(false);
   const [refreshingMarket, setRefreshingMarket] = useState(false);
   const [refreshingMatches, setRefreshingMatches] = useState(false);
+  const [editingOpportunityId, setEditingOpportunityId] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const [opportunityDraft, setOpportunityDraft] = useState({
     title: "",
@@ -981,7 +984,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
 
                     setSubmitting(true);
                     try {
-                      await createOpportunity(profile.uid, {
+                      const opportunityPayload = {
                         title: opportunityDraft.title.trim(),
                         description: opportunityDraft.description.trim(),
                         industry: opportunityDraft.industry.trim() || "SaaS",
@@ -991,9 +994,20 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                         minExperience,
                         budgetMin,
                         budgetMax,
-                        status: "open",
-                      });
-                      toast.success("Opportunity published");
+                      };
+
+                      if (editingOpportunityId) {
+                        await updateOpportunity(editingOpportunityId, opportunityPayload);
+                        toast.success("Opportunity updated");
+                      } else {
+                        await createOpportunity(profile.uid, {
+                          ...opportunityPayload,
+                          status: "open",
+                        });
+                        toast.success("Opportunity published");
+                      }
+
+                      setEditingOpportunityId(null);
                       setOpportunityDraft({
                         title: "",
                         description: "",
@@ -1013,8 +1027,34 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                     }
                   }}
                 >
-                  {submitting ? "Publishing..." : "Publish opportunity"}
+                  {submitting
+                    ? editingOpportunityId
+                      ? "Updating..."
+                      : "Publishing..."
+                    : editingOpportunityId
+                      ? "Update opportunity"
+                      : "Publish opportunity"}
                 </Button>
+                {editingOpportunityId ? (
+                  <Button
+                    variant="ghost"
+                    onClick={() => {
+                      setEditingOpportunityId(null);
+                      setOpportunityDraft({
+                        title: "",
+                        description: "",
+                        industry: "SaaS",
+                        category: "Demand Generation",
+                        requiredSkills: "Pipeline, SEO, lifecycle marketing",
+                        minExperience: "3",
+                        budgetMin: "20",
+                        budgetMax: "50",
+                      });
+                    }}
+                  >
+                    Cancel edit
+                  </Button>
+                ) : null}
               </div>
             </Card>
           </section>
@@ -1064,6 +1104,62 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                         {formatCurrency(opportunity.budgetMax)} / hour
                       </span>
                       <span>{opportunity.minExperience}+ years</span>
+                    </div>
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      <Button
+                        variant="secondary"
+                        onClick={() => {
+                          setEditingOpportunityId(opportunity.id);
+                          setOpportunityDraft({
+                            title: opportunity.title,
+                            description: opportunity.description,
+                            industry: opportunity.industry,
+                            category: opportunity.category,
+                            requiredSkills: opportunity.requiredSkills.join(", "),
+                            minExperience: String(opportunity.minExperience),
+                            budgetMin: String(opportunity.budgetMin),
+                            budgetMax: String(opportunity.budgetMax),
+                          });
+                        }}
+                      >
+                        Edit job
+                      </Button>
+                      {opportunity.status === "open" ? (
+                        <Button
+                          variant="ghost"
+                          onClick={async () => {
+                            try {
+                              await updateOpportunity(opportunity.id, { status: "closed" });
+                              toast.success("Opportunity closed");
+                              await reload();
+                            } catch (error) {
+                              console.error(error);
+                              toast.error("Could not close opportunity.");
+                            }
+                          }}
+                        >
+                          Close job
+                        </Button>
+                      ) : null}
+                      <Button
+                        variant="danger"
+                        onClick={async () => {
+                          if (!window.confirm("Delete this job post?")) return;
+                          try {
+                            await deleteOpportunity(opportunity.id);
+                            if (editingOpportunityId === opportunity.id) {
+                              setEditingOpportunityId(null);
+                            }
+                            toast.success("Opportunity deleted");
+                            await reload();
+                          } catch (error) {
+                            console.error(error);
+                            toast.error("Could not delete opportunity.");
+                          }
+                        }}
+                      >
+                        Delete job
+                      </Button>
                     </div>
                   </div>
                 ))

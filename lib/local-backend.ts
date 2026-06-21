@@ -49,8 +49,11 @@ function arrayOrEmpty<T>(value: T[] | unknown): T[] {
 }
 
 function normalizeFreelancer(profile: FreelancerProfile): FreelancerProfile {
+  const storedRate = Number(profile.desiredMonthlyBudget) || 28;
   return {
     ...profile,
+    desiredMonthlyBudget:
+      storedRate > 500 ? Math.round(storedRate / 160) : storedRate,
     skills: arrayOrEmpty<string>(profile.skills),
     sectors: arrayOrEmpty<string>(profile.sectors),
     portfolioFiles: arrayOrEmpty<UploadedFileAsset>(profile.portfolioFiles),
@@ -130,7 +133,7 @@ function createSeedStore(): LocalStore {
     portfolio: "https://ava-stone.notion.site",
     bio:
       "Hands-on GTM operator who builds acquisition systems, pipeline reporting, and founder-friendly execution loops.",
-    desiredMonthlyBudget: 5200,
+    desiredMonthlyBudget: 32,
     resume: null,
     portfolioFiles: [],
     createdAt: current,
@@ -264,7 +267,7 @@ export async function localBootstrapUser(params: {
         store.freelancers[params.uid]?.bio ??
         "GTM specialist focused on fast learning loops and measurable growth.",
       desiredMonthlyBudget:
-        store.freelancers[params.uid]?.desiredMonthlyBudget ?? 4500,
+        store.freelancers[params.uid]?.desiredMonthlyBudget ?? 28,
       resume: store.freelancers[params.uid]?.resume ?? null,
       portfolioFiles: store.freelancers[params.uid]?.portfolioFiles ?? [],
       createdAt: store.freelancers[params.uid]?.createdAt ?? current,

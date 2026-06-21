@@ -548,7 +548,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                           desiredMonthlyBudget: Number(event.target.value),
                         })
                       }
-                      placeholder="Desired monthly budget"
+                      placeholder="Desired hourly rate"
                     />
                   </div>
                   <div className="grid gap-4 md:grid-cols-3">
@@ -833,14 +833,6 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                       placeholder="Website"
                     />
                   </div>
-                  <FileUpload
-                    kind="logo"
-                    userId={profile.uid}
-                    onUploaded={async (asset) => {
-                      setStartup({ ...startup, logo: asset });
-                      await saveStartupProfile(profile.uid, { logo: asset });
-                    }}
-                  />
                   <Button
                     disabled={submitting}
                     onClick={async () => {

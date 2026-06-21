@@ -137,8 +137,11 @@ function normalizeFreelancerProfile(
   data: FreelancerProfile
 ): FreelancerProfile {
   const normalized = normalizeDoc<FreelancerProfile>(id, data);
+  const storedRate = Number(normalized.desiredMonthlyBudget) || 28;
   return {
     ...normalized,
+    desiredMonthlyBudget:
+      storedRate > 500 ? Math.round(storedRate / 160) : storedRate,
     skills: arrayOrEmpty<string>(normalized.skills),
     sectors: arrayOrEmpty<string>(normalized.sectors),
     portfolioFiles: arrayOrEmpty<UploadedFileAsset>(normalized.portfolioFiles),
@@ -227,7 +230,7 @@ export async function bootstrapUser(params: {
             linkedin: "",
             portfolio: "",
             bio: "GTM specialist focused on fast learning loops and measurable growth.",
-            desiredMonthlyBudget: 4500,
+            desiredMonthlyBudget: 28,
             resume: null,
             portfolioFiles: [],
             createdAt: serverTimestamp(),
@@ -923,6 +926,21 @@ export async function uploadFile(params: {
       const task = uploadBytesResumable(fileRef, params.file);
 
       await new Promise<void>((resolve, reject) => {
+        const timeout =
+          params.kind === "logo"
+            ? window.setTimeout(() => {
+                reject(
+                  new Error(
+                    "Logo upload timed out. Confirm Firebase Storage is enabled and the configured storage bucket is correct."
+                  )
+                );
+                task.cancel();
+              }, 30_000)
+            : null;
+        const clearUploadTimeout = () => {
+          if (timeout !== null) window.clearTimeout(timeout);
+        };
+
         task.on(
           "state_changed",
           (snapshot) => {
@@ -931,8 +949,14 @@ export async function uploadFile(params: {
             );
             params.onProgress?.(progress);
           },
-          reject,
-          () => resolve()
+          (error) => {
+            clearUploadTimeout();
+            reject(error);
+          },
+          () => {
+            clearUploadTimeout();
+            resolve();
+          }
         );
       });
 

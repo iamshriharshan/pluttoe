@@ -122,8 +122,8 @@ export function ProfilePageClient({ id }: { id: string }) {
           <section className="grid gap-6 md:grid-cols-4">
             <Stat label="Experience" value={`${bundle.freelancer?.yearsExperience} years`} />
             <Stat
-              label="Budget"
-              value={formatCurrency(bundle.freelancer?.desiredMonthlyBudget ?? 0)}
+              label="Hourly rate"
+              value={`${formatCurrency(bundle.freelancer?.desiredMonthlyBudget ?? 0)} / hour`}
             />
             <Stat label="Github" value={bundle.freelancer?.github || "Not shared"} />
             <Stat
@@ -226,9 +226,7 @@ export function ProfilePageClient({ id }: { id: string }) {
                   >
                     Open company logo
                   </a>
-                ) : (
-                  <p>No company logo uploaded yet.</p>
-                )}
+                ) : null}
               </div>
             </Card>
 

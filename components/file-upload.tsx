@@ -63,7 +63,11 @@ export function FileUpload({ kind, userId, onUploaded }: FileUploadProps) {
       toast.success("Upload complete");
     } catch (error) {
       console.error(error);
-      toast.error("Upload failed. Please try again.");
+      toast.error(
+        kind === "logo" && error instanceof Error
+          ? error.message
+          : "Upload failed. Please try again."
+      );
     } finally {
       setUploading(false);
     }

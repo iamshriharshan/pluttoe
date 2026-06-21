@@ -109,8 +109,8 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
     category: "Demand Generation",
     requiredSkills: "Pipeline, SEO, lifecycle marketing",
     minExperience: "3",
-    budgetMin: "3500",
-    budgetMax: "6000",
+    budgetMin: "20",
+    budgetMax: "50",
   });
 
   useEffect(() => {
@@ -736,7 +736,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                     </div>
                     <div className="mt-4 text-sm text-zinc-500">
                       {formatCurrency(opportunity.budgetMin)} -{" "}
-                      {formatCurrency(opportunity.budgetMax)} / month
+                      {formatCurrency(opportunity.budgetMax)} / hour
                     </div>
                     <div className="mt-5 flex gap-3">
                       <Link href={`/profile/${opportunity.startupId}`}>
@@ -934,7 +934,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                   />
                   <Input
                     type="number"
-                    placeholder="Budget min"
+                    placeholder="Hourly pay min"
                     value={opportunityDraft.budgetMin}
                     onChange={(event) =>
                       setOpportunityDraft({
@@ -946,7 +946,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                 </div>
                 <Input
                   type="number"
-                  placeholder="Budget max"
+                  placeholder="Hourly pay max"
                   value={opportunityDraft.budgetMax}
                   onChange={(event) =>
                     setOpportunityDraft({
@@ -1001,8 +1001,8 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                         category: "Demand Generation",
                         requiredSkills: "Pipeline, SEO, lifecycle marketing",
                         minExperience: "3",
-                        budgetMin: "3500",
-                        budgetMax: "6000",
+                        budgetMin: "20",
+                        budgetMax: "50",
                       });
                       await reload();
                     } catch (error) {
@@ -1061,7 +1061,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                       <span>{opportunity.industry}</span>
                       <span>
                         {formatCurrency(opportunity.budgetMin)} -{" "}
-                        {formatCurrency(opportunity.budgetMax)} / month
+                        {formatCurrency(opportunity.budgetMax)} / hour
                       </span>
                       <span>{opportunity.minExperience}+ years</span>
                     </div>

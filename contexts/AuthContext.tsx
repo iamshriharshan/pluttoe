@@ -208,6 +208,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       async signInWithRole(params) {
         if (firebaseReady()) {
           try {
+            if (params.mode === "signup") {
+              document.cookie = `pluto_role=${params.role}; Max-Age=600; path=/; SameSite=Lax`;
+            }
+
             const { auth } = getFirebaseServices();
             const result =
               params.method === "google"
@@ -245,7 +249,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
             await bootstrapUser({
               uid: result.user.uid,
-              role: existingProfile?.role ?? params.role,
+              role:
+                params.mode === "signup"
+                  ? params.role
+                  : existingProfile?.role ?? params.role,
               displayName: existingProfile?.displayName ?? displayName,
               email: existingProfile?.email ?? email,
             });

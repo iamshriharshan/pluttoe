@@ -12,7 +12,7 @@ import { Card } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
 import { getProfileBundle } from "@/lib/firestore";
 import { formatCurrency, formatDate, getRoleHomePath } from "@/lib/utils";
-import type { ProfileBundle, UploadedFileAsset } from "@/types";
+import type { ProfileBundle } from "@/types";
 
 function Stat({
   label,
@@ -68,6 +68,9 @@ export function ProfilePageClient({ id }: { id: string }) {
 
   const isOwnProfile = authUser?.uid === bundle.user.uid;
   const isFreelancer = bundle.user.role === "freelancer";
+  const resumeHref = bundle.freelancer?.resumeLink || bundle.freelancer?.resume?.url;
+  const portfolioHref =
+    bundle.freelancer?.portfolio || bundle.freelancer?.portfolioFiles?.[0]?.url;
 
   return (
     <div className="space-y-6">
@@ -136,30 +139,20 @@ export function ProfilePageClient({ id }: { id: string }) {
             <Card>
               <p className="text-lg font-semibold text-zinc-950">Links and files</p>
               <div className="mt-5 space-y-4 text-sm text-zinc-600">
-                <p>Portfolio URL: {bundle.freelancer?.portfolio || "Not shared"}</p>
-                <p>Resume: {bundle.freelancer?.resume?.name || "Not uploaded"}</p>
-                <div className="space-y-2">
-                  <p className="font-medium text-zinc-950">Portfolio files</p>
-                  {asArray<UploadedFileAsset>(
-                    bundle.freelancer?.portfolioFiles
-                  ).length ? (
-                    asArray<UploadedFileAsset>(
-                      bundle.freelancer?.portfolioFiles
-                    ).map((file) => (
-                      <a
-                        key={file.path}
-                        href={file.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="block rounded-2xl border border-zinc-200 px-4 py-3 hover:bg-zinc-50"
-                      >
-                        {file.name}
-                      </a>
-                    ))
-                  ) : (
-                    <p className="text-zinc-500">No portfolio files yet.</p>
-                  )}
-                </div>
+                {resumeHref ? (
+                  <a href={resumeHref} target="_blank" rel="noreferrer" className="block underline">
+                    Open resume
+                  </a>
+                ) : (
+                  <p>Resume: Not shared</p>
+                )}
+                {portfolioHref ? (
+                  <a href={portfolioHref} target="_blank" rel="noreferrer" className="block underline">
+                    Open portfolio
+                  </a>
+                ) : (
+                  <p>Portfolio: Not shared</p>
+                )}
               </div>
             </Card>
 

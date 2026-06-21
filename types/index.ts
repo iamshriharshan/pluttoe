@@ -40,6 +40,7 @@ export interface FreelancerProfile extends Timestamped {
   github?: string;
   linkedin?: string;
   portfolio?: string;
+  resumeLink?: string;
   bio: string;
   desiredMonthlyBudget: number;
   resume?: UploadedFileAsset | null;

@@ -6,7 +6,6 @@ import { useCallback, useEffect, useMemo, useState, startTransition } from "reac
 import { toast } from "sonner";
 
 import { EmptyState } from "@/components/empty-state";
-import { FileUpload } from "@/components/file-upload";
 import { DashboardSkeleton } from "@/components/skeletons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -551,7 +550,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                       placeholder="Desired hourly rate"
                     />
                   </div>
-                  <div className="grid gap-4 md:grid-cols-3">
+                  <div className="grid gap-4 md:grid-cols-2">
                     <Input
                       value={freelancer.linkedin ?? ""}
                       onChange={(event) =>
@@ -569,6 +568,18 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                       }
                       placeholder="GitHub URL"
                     />
+                  </div>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <Input
+                      value={freelancer.resumeLink ?? ""}
+                      onChange={(event) =>
+                        setFreelancer({
+                          ...freelancer,
+                          resumeLink: event.target.value,
+                        })
+                      }
+                      placeholder="Resume document link (optional)"
+                    />
                     <Input
                       value={freelancer.portfolio ?? ""}
                       onChange={(event) =>
@@ -577,32 +588,7 @@ export function DashboardView({ requiredRole }: { requiredRole?: "freelancer" | 
                           portfolio: event.target.value,
                         })
                       }
-                      placeholder="Portfolio URL"
-                    />
-                  </div>
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <FileUpload
-                      kind="resume"
-                      userId={profile.uid}
-                      onUploaded={async (asset) => {
-                        const next = { ...freelancer, resume: asset };
-                        setFreelancer(next);
-                        await saveFreelancerProfile(profile.uid, { resume: asset });
-                      }}
-                    />
-                    <FileUpload
-                      kind="portfolio"
-                      userId={profile.uid}
-                      onUploaded={async (asset) => {
-                        const nextFiles = [...freelancer.portfolioFiles, asset];
-                        setFreelancer({
-                          ...freelancer,
-                          portfolioFiles: nextFiles,
-                        });
-                        await saveFreelancerProfile(profile.uid, {
-                          portfolioFiles: nextFiles,
-                        });
-                      }}
+                      placeholder="Portfolio link (optional)"
                     />
                   </div>
                   <Button
